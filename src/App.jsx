@@ -1,9 +1,9 @@
 import { Routes, Route, Link } from "react-router-dom";
-import Home from "./pages/Home";
+import Home from "./pages/Home.jsxs";
 import React from "react";
-import Header from "./Conponetes/Header";
-import Footer from "./Conponetes/Footer";
-import WhatsAppButton from "./Conponetes/Whats";
+import Header from "./Conponetes/Header.jsx";
+import Footer from "./Conponetes/Footer.jsx";
+import WhatsAppButton from "./Conponetes/Whats.jsx";
 
 function App() {
   return (
