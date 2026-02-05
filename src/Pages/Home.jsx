@@ -57,7 +57,6 @@ export default function Home() {
   return (
     <div className="bg-black text-white">
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-950 via-blue-950 to-gray-900 px-10 py-20 overflow-hidden">
-        {/* Detalhes extras no background */}
         <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-blue-900 rounded-full blur-[200px] opacity-30"></div>
         <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-blue-500 rounded-full   opacity-30"></div>
         <div className="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-5 mix-blend-overlay"></div>
@@ -65,7 +64,6 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl w-full relative z-10 ">
           <div className="space-y-6 text-center md:text-left">
-            {/* Fonte maior e responsiva */}
             <h1 className="text-4xl sm:text-5xl md:text-8xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-indigo-600 ">
               VoidWorks
             </h1>
@@ -79,12 +77,24 @@ export default function Home() {
               performance e design sofisticado.
             </p>
 
-            {/* Botões só aparecem em telas md pra cima */}
             <div className="hidden md:flex space-x-6 pt-4">
-              <button className="px-10 py-5 rounded bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-400 hover:to-cyan-500 transition shadow-lg shadow-blue-500/40 text-white font-semibold text-xl transform hover:scale-105">
+              <button
+                onClick={() => {
+                  document
+                    .getElementById("projetos")
+                    .scrollIntoView({ behavior: "smooth" });
+                }}
+                className="px-10 py-5 rounded bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-400 hover:to-cyan-500 transition shadow-lg shadow-blue-500/40 text-white font-semibold text-xl transform hover:scale-105"
+              >
                 Ver Projetos
               </button>
-              <button className="px-10 py-5 rounded bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 transition shadow-lg shadow-indigo-500/40 text-white font-semibold text-xl transform hover:scale-105">
+
+              <button
+                onClick={() => {
+                  window.open("https://wa.me/5551998957775", "_blank");
+                }}
+                className="px-10 py-5 rounded bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 transition shadow-lg shadow-indigo-500/40 text-white font-semibold text-xl transform hover:scale-105"
+              >
                 Fale Conosco
               </button>
             </div>
@@ -167,14 +177,10 @@ export default function Home() {
         <div className="max-w-6xl mx-auto space-y-20">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 text-left">
-              {/* Divina Estilo mantém azul */}
               <h2 className="text-4xl font-extrabold tracking-tight flex items-baseline gap-2">
-                {/* Divina Estilo destacado */}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-indigo-600 drop-shadow-[0_0_15px_rgba(0,150,255,0.5)]">
-                  Divina Estilo
+                  Divino Vestido
                 </span>
-
-                {/* Agenda Online menor e neutro */}
               </h2>
               <span className="text-lg font-medium text-gray-400 tracking-wide">
                 Agenda Online
@@ -191,16 +197,22 @@ export default function Home() {
                 integração com plataformas externas, garantindo eficiência e
                 praticidade.
               </p>
+              <a
+                href="https://divinoteste.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-500 underline transition-colors"
+              >
+                Acesse o site
+              </a>
             </div>
             <div className="relative  flex justify-center items-center w-full h-auto mt-20 md:w-80 md:h-46 ">
-              {/* Primeira imagem */}
               <img
                 src={Divino}
                 alt="Agenda Online"
                 className="w-40 h-56 md:w-full md:h-full rounded shadow-lg transform transition duration-500 z-10 hover:scale-105 hover:z-50"
               />
 
-              {/* Segunda imagem */}
               <img
                 src={Divino2}
                 alt="Site Empresarial"
@@ -210,7 +222,6 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Imagem à direita */}
             <div className="flex justify-center md:order-2">
               <img
                 src={Elo}
@@ -219,14 +230,11 @@ export default function Home() {
               />
             </div>
 
-            {/* Texto à esquerda */}
             <div className="space-y-6 text-left md:order-1">
               <h2 className="text-4xl font-extrabold tracking-tight flex items-baseline gap-2">
-                {/* Marca destacada */}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-indigo-600 drop-shadow-[0_0_15px_rgba(0,150,255,0.5)]">
                   Elo Contabilidade
                 </span>
-                {/* Subtítulo neutro */}
               </h2>
               <span className="text-lg font-medium text-gray-400 tracking-wide">
                 Site Empresarial
@@ -240,40 +248,14 @@ export default function Home() {
                 Estrutura otimizada para SEO, design responsivo e integração com
                 ferramentas corporativas.
               </p>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center  ">
-            <div className="space-y-6 text-left ">
-              <h2 className="text-4xl font-extrabold tracking-tight flex items-baseline gap-2">
-                {/* Marca destacada */}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-indigo-600 drop-shadow-[0_0_15px_rgba(0,150,255,0.5)]">
-                  E-commerce
-                </span>
-                {/* Subtítulo neutro */}
-              </h2>
-              <span className="text-lg font-medium text-gray-400 tracking-wide">
-                Moderno
-              </span>
-
-              <p className="text-gray-300 text-lg leading-relaxed">
-                Plataforma de vendas online com design atrativo e foco em
-                conversão.
-              </p>
-              <p className="text-gray-400">
-                Recursos como carrinho inteligente, meios de pagamento
-                integrados e painel administrativo completo para gestão de
-                produtos e clientes.
-              </p>
-            </div>
-
-            {/* Imagem à direita */}
-            <div className="flex justify-center">
-              <img
-                src="/images/ecommerce.jpg"
-                alt="E-commerce Moderno"
-                className="rounded-xl shadow-lg transform transition duration-500 hover:scale-105"
-              />
+              <a
+                href="https://elosolucoesempresariais.com.br/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-500 underline transition-colors"
+              >
+                Acesse o site
+              </a>
             </div>
           </div>
         </div>

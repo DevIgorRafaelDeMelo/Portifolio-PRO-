@@ -18,8 +18,8 @@ export default function Footer() {
         {/* Contato extra */}
         <div>
           <h3 className="text-lg font-semibold text-blue-400 mb-4">Contato</h3>
-          <p className="text-gray-400 text-sm">contato@voidworks.com.br</p>
-          <p className="text-gray-400 text-sm">+55 (11) 99999-9999</p>
+          <p className="text-gray-400 text-sm">Igorarafael765@gmail.com</p>
+          <p className="text-gray-400 text-sm">+55 (51) 99892-7775</p>
         </div>
 
         {/* Redes sociais */}
@@ -29,7 +29,7 @@ export default function Footer() {
           </h3>
           <div className="flex justify-center md:justify-start space-x-6 text-xl">
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/igor-rafael-de-melo-3b9a69240/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-blue-500 transition transform hover:scale-110"
@@ -37,7 +37,7 @@ export default function Footer() {
               <FaLinkedinIn />
             </a>
             <a
-              href="https://github.com"
+              href="https://github.com/DevIgorRafaelDeMelo"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-blue-500 transition transform hover:scale-110"
@@ -45,7 +45,7 @@ export default function Footer() {
               <FaGithub />
             </a>
             <a
-              href="https://wa.me/5511999999999" // coloque seu número aqui
+              href="https://wa.me/5551998927775"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-400 hover:text-blue-500 transition transform hover:scale-110"
