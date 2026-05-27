@@ -18,7 +18,7 @@ export default function Footer() {
         {/* Contato extra */}
         <div>
           <h3 className="text-lg font-semibold text-blue-400 mb-4">Contato</h3>
-          <p className="text-gray-400 text-sm">Igorarafael765@gmail.com</p>
+          <p className="text-gray-400 text-sm">igorrafael765@gmail.com</p>
           <p className="text-gray-400 text-sm">+55 (51) 99892-7775</p>
         </div>
 
