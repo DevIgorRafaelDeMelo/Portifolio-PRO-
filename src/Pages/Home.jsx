@@ -1,298 +1,625 @@
 import React from "react";
 import {
-  FaCalendarAlt,
+  FaArrowDown,
+  FaArrowRight,
   FaBlog,
-  FaRocket,
   FaBuilding,
+  FaCalendarAlt,
+  FaCheck,
   FaClipboardList,
+  FaExternalLinkAlt,
   FaGraduationCap,
-  FaReact,
-  FaNodeJs,
-  FaLaptopCode,
+  FaRocket,
+  FaWhatsapp,
 } from "react-icons/fa";
+
 import Divino from "../assets/Divino.png";
 import Divino2 from "../assets/Divino2.png";
 import Elo from "../assets/Elo.png";
-import { SiTailwindcss, SiVercel } from "react-icons/si";
 
 export default function Home() {
   const servicos = [
     {
-      titulo: "Agendas Inteligentes",
+      numero: "01",
+      titulo: "Sites institucionais",
       descricao:
-        "Ferramentas de agendamento online para otimizar tempo e organização.",
-      icone: <FaCalendarAlt className="text-blue-400 text-4xl mb-4" />,
+        "Sites modernos para apresentar empresas, serviços, diferenciais e canais de atendimento.",
+      icone: FaBuilding,
     },
     {
-      titulo: "Blogs Profissionais",
+      numero: "02",
+      titulo: "Agendas inteligentes",
       descricao:
-        "Plataformas de conteúdo com design atrativo e foco em engajamento.",
-      icone: <FaBlog className="text-blue-400 text-4xl mb-4" />,
+        "Sistemas de agendamento para organizar horários, clientes e atendimentos.",
+      icone: FaCalendarAlt,
     },
     {
-      titulo: "Landing Pages de Alta Conversão",
-      descricao: "Páginas otimizadas para campanhas e geração de leads.",
-      icone: <FaRocket className="text-blue-400 text-4xl mb-4" />,
-    },
-    {
-      titulo: "Portais Corporativos",
+      numero: "03",
+      titulo: "Landing pages",
       descricao:
-        "Ambientes digitais completos para comunicação interna e externa.",
-      icone: <FaBuilding className="text-blue-400 text-4xl mb-4" />,
+        "Páginas estratégicas para campanhas, captação de contatos e geração de oportunidades.",
+      icone: FaRocket,
     },
     {
-      titulo: "Sistemas de Reservas Online",
+      numero: "04",
+      titulo: "Blogs profissionais",
       descricao:
-        "Soluções para restaurantes, clínicas e academias com gestão eficiente.",
-      icone: <FaClipboardList className="text-blue-400 text-4xl mb-4" />,
+        "Plataformas para publicação de conteúdos, notícias e fortalecimento de autoridade.",
+      icone: FaBlog,
     },
-
     {
-      titulo: "Plataformas Educacionais (E-learning)",
-      descricao: "Ambientes digitais para cursos online e treinamentos.",
-      icone: <FaGraduationCap className="text-blue-400 text-4xl mb-4" />,
+      numero: "05",
+      titulo: "Sistemas de reservas",
+      descricao:
+        "Soluções para clínicas, restaurantes, espaços de eventos e empresas de atendimento.",
+      icone: FaClipboardList,
+    },
+    {
+      numero: "06",
+      titulo: "Plataformas educacionais",
+      descricao:
+        "Ambientes digitais para cursos, treinamentos, conteúdos e acompanhamento de alunos.",
+      icone: FaGraduationCap,
     },
   ];
 
-  return (
-    <div className="bg-black text-white">
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-950 via-blue-950 to-gray-900 px-10 py-20 overflow-hidden">
-        <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-blue-900 rounded-full blur-[200px] opacity-30"></div>
-        <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-blue-500 rounded-full   opacity-30"></div>
-        <div className="absolute inset-0 bg-[url('/images/pattern.svg')] opacity-5 mix-blend-overlay"></div>
-        <div className="absolute top-1/3 left-1/4 w-72 h-72 border border-blue-500/20 rounded-full animate-pulse"></div>
+  const diferenciais = [
+    "Design personalizado",
+    "Experiência responsiva",
+    "Boa velocidade de carregamento",
+    "Estrutura pensada para conversão",
+  ];
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl w-full relative z-10 ">
-          <div className="space-y-6 text-center md:text-left">
-            <h1 className="text-4xl sm:text-5xl md:text-8xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-indigo-600 ">
-              VoidWorks
+  const scrollToSection = (id) => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
+  const abrirWhatsApp = () => {
+    const mensagem = encodeURIComponent(
+      "Olá! Conheci a VoidWorks pelo site e gostaria de conversar sobre um projeto."
+    );
+
+    window.open(
+      `https://wa.me/5551998957775?text=${mensagem}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
+  const enviarFormulario = (event) => {
+    event.preventDefault();
+
+    const formulario = new FormData(event.currentTarget);
+
+    const nome = formulario.get("nome");
+    const email = formulario.get("email");
+    const mensagem = formulario.get("mensagem");
+
+    const texto = encodeURIComponent(
+      `Olá! Meu nome é ${nome}.\n\nE-mail: ${email}\n\nSobre o projeto:\n${mensagem}`
+    );
+
+    window.open(
+      `https://wa.me/5551998957775?text=${texto}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
+  return (
+    <main className="min-h-screen bg-[#f2f0ea] text-[#101010]">
+      {/* HERO */}
+      <section className="relative min-h-screen border-b border-black/15 px-6 py-8 lg:px-12">
+        <header className="mx-auto flex max-w-7xl items-center justify-between border-b border-black/15 pb-6">
+          <button
+            type="button"
+            onClick={() => scrollToSection("inicio")}
+            className="text-xl font-black uppercase tracking-[-0.04em]"
+          >
+            Void<span className="text-blue-600">Works</span>
+          </button>
+
+          <nav className="hidden items-center gap-9 text-sm font-semibold uppercase tracking-[0.14em] md:flex">
+            <button
+              type="button"
+              onClick={() => scrollToSection("sobre")}
+              className="transition hover:text-blue-600"
+            >
+              Sobre
+            </button>
+
+            <button
+              type="button"
+              onClick={() => scrollToSection("servicos")}
+              className="transition hover:text-blue-600"
+            >
+              Serviços
+            </button>
+
+            <button
+              type="button"
+              onClick={() => scrollToSection("projetos")}
+              className="transition hover:text-blue-600"
+            >
+              Projetos
+            </button>
+
+            <button
+              type="button"
+              onClick={() => scrollToSection("contato")}
+              className="transition hover:text-blue-600"
+            >
+              Contato
+            </button>
+          </nav>
+
+          <button
+            type="button"
+            onClick={abrirWhatsApp}
+            className="border border-black bg-black px-5 py-3 text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:bg-blue-600"
+          >
+            Iniciar projeto
+          </button>
+        </header>
+
+        <div
+          id="inicio"
+          className="mx-auto grid max-w-7xl gap-14 pb-12 pt-20 lg:grid-cols-[1.18fr_0.82fr] lg:pt-28"
+        >
+          <div>
+            <p className="mb-8 flex items-center gap-4 text-xs font-bold uppercase tracking-[0.24em] text-blue-600">
+              <span className="h-px w-12 bg-blue-600" />
+              Estúdio de soluções digitais
+            </p>
+
+            <h1 className="max-w-5xl text-[15vw] font-black uppercase leading-[0.8] tracking-[-0.085em] sm:text-7xl md:text-8xl lg:text-[108px]">
+              Ideias
+              <span className="block text-blue-600">digitais</span>
+              que funcionam.
             </h1>
 
-            <p className="text-blue-200 text-base sm:text-lg md:text-2xl max-w-md mx-auto md:mx-0 leading-relaxed">
-              Criando soluções digitais modernas e impactantes.
-            </p>
+            <div className="mt-12 grid gap-8 border-t border-black/15 pt-8 sm:grid-cols-2">
+              <p className="max-w-md text-lg leading-8 text-black/65">
+                Desenvolvemos sites, sistemas e experiências digitais para
+                empresas que desejam crescer, organizar processos e fortalecer
+                sua presença online.
+              </p>
 
-            <p className="text-blue-300 text-sm sm:text-base md:text-xl max-w-xl mx-auto md:mx-0 leading-relaxed">
-              Criamos experiências digitais únicas, com foco em inovação,
-              performance e design sofisticado.
-            </p>
+              <div className="flex flex-col items-start gap-5 sm:items-end">
+                <button
+                  type="button"
+                  onClick={() => scrollToSection("projetos")}
+                  className="group flex items-center gap-4 text-sm font-bold uppercase tracking-[0.18em]"
+                >
+                  Ver projetos
+                  <span className="flex h-12 w-12 items-center justify-center border border-black transition group-hover:bg-blue-600 group-hover:text-white">
+                    <FaArrowRight />
+                  </span>
+                </button>
 
-            <div className="hidden md:flex space-x-6 pt-4">
-              <button
-                onClick={() => {
-                  document
-                    .getElementById("projetos")
-                    .scrollIntoView({ behavior: "smooth" });
-                }}
-                className="px-10 py-5 rounded bg-gradient-to-r from-blue-500 to-cyan-600 hover:from-blue-400 hover:to-cyan-500 transition shadow-lg shadow-blue-500/40 text-white font-semibold text-xl transform hover:scale-105"
-              >
-                Ver Projetos
-              </button>
-
-              <button
-                onClick={() => {
-                  window.open("https://wa.me/5551998957775", "_blank");
-                }}
-                className="px-10 py-5 rounded bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 transition shadow-lg shadow-indigo-500/40 text-white font-semibold text-xl transform hover:scale-105"
-              >
-                Fale Conosco
-              </button>
-            </div>
-          </div>
-
-          <div className="relative flex justify-center">
-            <div className="w-96 h-96 bg-gradient-to-tr from-indigo-700 to-blue-500 rounded-2xl shadow-2xl transform rotate-12 hover:rotate-0 transition duration-500 flex flex-col items-center justify-center space-y-6">
-              <FaReact className="text-cyan-300 text-7xl animate-spin-slow drop-shadow-[0_0_25px_rgba(0,255,255,0.6)]" />
-              <div className="flex space-x-6 text-5xl text-white">
-                <SiTailwindcss className="hover:text-cyan-400 transition" />
-                <FaNodeJs className="hover:text-green-400 transition" />
-                <SiVercel className="hover:text-gray-300 transition" />
-                <FaLaptopCode className="hover:text-blue-300 transition" />
+                <p className="text-xs uppercase tracking-[0.16em] text-black/45">
+                  Sites • Sistemas • Plataformas
+                </p>
               </div>
             </div>
-            <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-indigo-900 rounded-full blur-2xl opacity-40"></div>
           </div>
-        </div>
-      </section>
 
-      <section id="sobre" className="py-20 px-6 bg-gray-950">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-blue-400 mb-6">Sobre Nós</h2>
-          <p className="text-gray-300 leading-relaxed">
-            Na <span className="text-blue-400 font-semibold">VoidWorks</span>,
-            desenvolvemos soluções digitais que unem design moderno, tecnologia
-            de ponta e foco em resultados. Nosso objetivo é transformar ideias
-            em experiências digitais impactantes, ajudando empresas a se
-            destacarem no ambiente online.
-          </p>
-          <p className="text-gray-400 mt-6">
-            Oferecemos <span className="text-blue-300">sites corporativos</span>{" "}
-            que reforçam a identidade da marca,{" "}
-            <span className="text-blue-300">agendas inteligentes</span> para
-            otimizar a gestão,{" "}
-            <span className="text-blue-300">e-commerces modernos</span> que
-            aumentam vendas e{" "}
-            <span className="text-blue-300">blogs profissionais</span> que
-            fortalecem a comunicação. Cada projeto é pensado sob medida para
-            gerar performance, inovação e valor real para o negócio.
-          </p>
-        </div>
-      </section>
+          <div className="relative min-h-[430px] border border-black/15 bg-[#151515] p-7 text-white lg:min-h-[620px]">
+            <div className="flex items-center justify-between border-b border-white/20 pb-5">
+              <span className="text-xs font-semibold uppercase tracking-[0.22em] text-white/50">
+                Creative development
+              </span>
 
-      <section id="Serviços" className="py-20 px-6 bg-gray-950">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-blue-400 mb-16">Serviços</h2>
-          <div className="grid md:grid-cols-3 gap-10">
-            {servicos.map((servico, i) => (
-              <div
-                key={i}
-                className="relative p-10 rounded-xl border border-gray-700 
-                   hover:border-blue-500 transition group"
-              >
-                <div className="flex justify-center mb-6">
-                  <div className="text-blue-400 text-5xl group-hover:text-blue-500 transition">
-                    {servico.icone}
+              <span className="h-3 w-3 bg-blue-500" />
+            </div>
+
+            <div className="flex h-full flex-col justify-between pb-12 pt-12">
+              <div>
+                <p className="font-mono text-sm text-blue-400">
+                  {"<digital_experience />"}
+                </p>
+
+                <h2 className="mt-7 max-w-md text-4xl font-bold leading-tight tracking-[-0.04em] md:text-5xl">
+                  Estratégia, tecnologia e identidade em um único projeto.
+                </h2>
+              </div>
+
+              <div className="mt-16">
+                <div className="grid grid-cols-3 border-l border-t border-white/20">
+                  <div className="border-b border-r border-white/20 p-5">
+                    <p className="text-3xl font-bold">100%</p>
+                    <p className="mt-2 text-xs uppercase tracking-wider text-white/40">
+                      Responsivo
+                    </p>
+                  </div>
+
+                  <div className="border-b border-r border-white/20 p-5">
+                    <p className="text-3xl font-bold">UI</p>
+                    <p className="mt-2 text-xs uppercase tracking-wider text-white/40">
+                      Design
+                    </p>
+                  </div>
+
+                  <div className="border-b border-r border-white/20 p-5">
+                    <p className="text-3xl font-bold">UX</p>
+                    <p className="mt-2 text-xs uppercase tracking-wider text-white/40">
+                      Experiência
+                    </p>
                   </div>
                 </div>
 
-                <h3 className="text-xl font-bold mb-4 text-gray-200 group-hover:text-blue-400 transition">
-                  {servico.titulo}
-                </h3>
-
-                <p className="text-gray-400 text-sm leading-relaxed">
-                  {servico.descricao}
-                </p>
-
-                <span className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-blue-500 transition"></span>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection("sobre")}
+                  className="mt-8 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.2em] text-white/60 transition hover:text-blue-400"
+                >
+                  Explorar
+                  <FaArrowDown />
+                </button>
               </div>
-            ))}
+            </div>
+
+            <div className="absolute right-0 top-32 h-32 w-2 bg-blue-600" />
           </div>
         </div>
       </section>
 
-      <section id="projetos" className="py-20 px-6 bg-gray-950">
-        <h2 className="text-4xl font-bold text-blue-400 mb-16  text-center">
-          Parceiros
-        </h2>
-        <div className="max-w-6xl mx-auto space-y-20">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6 text-left">
-              <h2 className="text-4xl font-extrabold tracking-tight flex items-baseline gap-2">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-indigo-600 drop-shadow-[0_0_15px_rgba(0,150,255,0.5)]">
-                  Divino Vestido
-                </span>
-              </h2>
-              <span className="text-lg font-medium text-gray-400 tracking-wide">
-                Agenda Online
+      {/* SOBRE */}
+      <section id="sobre" className="border-b border-black/15 px-6 py-28 lg:px-12">
+        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.4fr_1.6fr]">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.24em] text-blue-600">
+              Sobre
+            </p>
+          </div>
+
+          <div>
+            <h2 className="max-w-5xl text-4xl font-black uppercase leading-[1.04] tracking-[-0.05em] sm:text-5xl lg:text-7xl">
+              Não criamos apenas sites.
+              <span className="block text-black/30">
+                Criamos ferramentas para negócios.
               </span>
+            </h2>
 
-              <p className="text-gray-300 text-lg leading-relaxed">
-                Sistema de agendamento inteligente para otimizar a gestão de
-                clientes, com interface simples e recursos avançados de
-                organização.
+            <div className="mt-16 grid gap-10 lg:grid-cols-2">
+              <p className="text-lg leading-8 text-black/65">
+                A VoidWorks transforma necessidades empresariais em soluções
+                digitais claras, modernas e funcionais. Cada projeto é pensado
+                para resolver um problema real e gerar valor para a empresa.
               </p>
 
-              <p className="text-gray-400">
-                Permite controle de horários, notificações automáticas e
-                integração com plataformas externas, garantindo eficiência e
-                praticidade.
+              <div>
+                <p className="leading-8 text-black/55">
+                  Desenvolvemos projetos personalizados, considerando a
+                  identidade da marca, o perfil do público, os objetivos
+                  comerciais e a experiência de quem utilizará a plataforma.
+                </p>
+
+                <div className="mt-8 grid gap-3">
+                  {diferenciais.map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-center gap-4 border-b border-black/15 py-4"
+                    >
+                      <FaCheck className="text-xs text-blue-600" />
+                      <span className="font-semibold">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVIÇOS */}
+      <section
+        id="servicos"
+        className="border-b border-black/15 bg-[#151515] px-6 py-28 text-white lg:px-12"
+      >
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-14 lg:grid-cols-[0.4fr_1.6fr]">
+            <p className="text-xs font-bold uppercase tracking-[0.24em] text-blue-400">
+              Serviços
+            </p>
+
+            <div>
+              <h2 className="max-w-4xl text-4xl font-black uppercase tracking-[-0.05em] sm:text-5xl lg:text-7xl">
+                Soluções criadas para diferentes necessidades.
+              </h2>
+
+              <p className="mt-8 max-w-2xl text-lg leading-8 text-white/50">
+                Do primeiro contato com o cliente até a organização de processos
+                internos, criamos soluções para diferentes etapas do negócio.
               </p>
+            </div>
+          </div>
+
+          <div className="mt-20 border-t border-white/20">
+            {servicos.map(
+              ({ numero, titulo, descricao, icone: Icone }, index) => (
+                <article
+                  key={titulo}
+                  className="group grid gap-7 border-b border-white/20 py-9 transition lg:grid-cols-[0.2fr_0.2fr_0.6fr_1fr] lg:items-center"
+                >
+                  <span className="font-mono text-sm text-white/30">
+                    {numero}
+                  </span>
+
+                  <Icone className="text-2xl text-blue-400" />
+
+                  <h3 className="text-2xl font-bold tracking-[-0.03em] transition group-hover:text-blue-400">
+                    {titulo}
+                  </h3>
+
+                  <div className="flex items-center justify-between gap-8">
+                    <p className="max-w-xl leading-7 text-white/45">
+                      {descricao}
+                    </p>
+
+                    <span className="hidden h-12 w-12 flex-shrink-0 items-center justify-center border border-white/20 transition group-hover:border-blue-500 group-hover:bg-blue-600 lg:flex">
+                      <FaArrowRight className="text-sm" />
+                    </span>
+                  </div>
+                </article>
+              )
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* PROJETOS */}
+      <section
+        id="projetos"
+        className="border-b border-black/15 px-6 py-28 lg:px-12"
+      >
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-14 lg:grid-cols-[0.4fr_1.6fr]">
+            <p className="text-xs font-bold uppercase tracking-[0.24em] text-blue-600">
+              Projetos
+            </p>
+
+            <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
+              <h2 className="max-w-4xl text-4xl font-black uppercase tracking-[-0.05em] sm:text-5xl lg:text-7xl">
+                Trabalhos em destaque.
+              </h2>
+
+              <p className="max-w-sm leading-7 text-black/50">
+                Projetos desenvolvidos para melhorar a presença digital e a
+                experiência dos clientes.
+              </p>
+            </div>
+          </div>
+
+          {/* DIVINO VESTIDO */}
+          <article className="mt-24 grid gap-10 border-t border-black/15 pt-12 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="relative min-h-[470px] bg-[#dedbd3] p-5 md:min-h-[650px]">
+              <div className="absolute left-5 top-5 h-[76%] w-[64%] border border-black/15 bg-white p-2 shadow-xl">
+                <img
+                  src={Divino}
+                  alt="Sistema de agendamento da Divino Vestido"
+                  className="h-full w-full object-cover object-top"
+                />
+              </div>
+
+              <div className="absolute bottom-5 right-5 h-[67%] w-[54%] border border-black/15 bg-white p-2 shadow-2xl transition duration-500 hover:-translate-y-2">
+                <img
+                  src={Divino2}
+                  alt="Segunda tela do sistema Divino Vestido"
+                  className="h-full w-full object-cover object-top"
+                />
+              </div>
+
+              <span className="absolute bottom-7 left-7 text-xs font-bold uppercase tracking-[0.2em] text-black/50">
+                Agenda digital
+              </span>
+            </div>
+
+            <div className="flex flex-col justify-between border-t border-black/15 pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0">
+              <div>
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-sm text-blue-600">01</span>
+
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-black/40">
+                    Sistema web
+                  </span>
+                </div>
+
+                <h3 className="mt-10 text-5xl font-black uppercase leading-none tracking-[-0.055em] lg:text-7xl">
+                  Divino
+                  <span className="block text-blue-600">Vestido</span>
+                </h3>
+
+                <p className="mt-10 text-lg leading-8 text-black/60">
+                  Plataforma criada para simplificar o agendamento de
+                  atendimentos e melhorar a organização dos horários da loja.
+                </p>
+
+                <p className="mt-5 leading-7 text-black/45">
+                  A solução oferece uma experiência simples para clientes e
+                  facilita o controle dos atendimentos, horários e
+                  disponibilidade.
+                </p>
+              </div>
+
               <a
                 href="https://divinoteste.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-400 hover:text-blue-500 underline transition-colors"
+                className="group mt-12 flex items-center justify-between border-b border-black py-5 font-bold uppercase tracking-[0.16em] transition hover:border-blue-600 hover:text-blue-600"
               >
-                Acesse o site
+                Acessar projeto
+                <FaExternalLinkAlt className="text-sm transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
               </a>
             </div>
-            <div className="relative  flex justify-center items-center w-full h-auto mt-20 md:w-80 md:h-46 ">
-              <img
-                src={Divino}
-                alt="Agenda Online"
-                className="w-40 h-56 md:w-full md:h-full rounded shadow-lg transform transition duration-500 z-10 hover:scale-105 hover:z-50"
-              />
+          </article>
 
-              <img
-                src={Divino2}
-                alt="Site Empresarial"
-                className="w-40 h-56 md:w-full md:h-full rounded shadow-lg transform transition duration-500 z-20 md:absolute md:top-12 md:left-40 hover:scale-105"
-              />
-            </div>
-          </div>
+          {/* ELO */}
+          <article className="mt-28 grid gap-10 border-t border-black/15 pt-12 lg:grid-cols-[0.9fr_1.1fr]">
+            <div className="flex flex-col justify-between lg:pr-12">
+              <div>
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-sm text-blue-600">02</span>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="flex justify-center md:order-2">
-              <img
-                src={Elo}
-                alt="Site Empresarial"
-                className="rounded-xl shadow-lg transform transition duration-500 hover:scale-105 w-100"
-              />
-            </div>
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-black/40">
+                    Site institucional
+                  </span>
+                </div>
 
-            <div className="space-y-6 text-left md:order-1">
-              <h2 className="text-4xl font-extrabold tracking-tight flex items-baseline gap-2">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-500 to-indigo-600 drop-shadow-[0_0_15px_rgba(0,150,255,0.5)]">
-                  Elo Contabilidade
-                </span>
-              </h2>
-              <span className="text-lg font-medium text-gray-400 tracking-wide">
-                Site Empresarial
-              </span>
+                <h3 className="mt-10 text-5xl font-black uppercase leading-none tracking-[-0.055em] lg:text-7xl">
+                  Elo
+                  <span className="block text-blue-600">Contabilidade</span>
+                </h3>
 
-              <p className="text-gray-300 text-lg leading-relaxed">
-                Presença digital moderna para empresas que querem se destacar no
-                mercado e transmitir credibilidade.
-              </p>
-              <p className="text-gray-400">
-                Estrutura otimizada para SEO, design responsivo e integração com
-                ferramentas corporativas.
-              </p>
+                <p className="mt-10 text-lg leading-8 text-black/60">
+                  Site desenvolvido para transmitir credibilidade, proximidade e
+                  apresentar os serviços do escritório contábil.
+                </p>
+
+                <p className="mt-5 leading-7 text-black/45">
+                  O projeto reúne informações institucionais, serviços,
+                  conteúdos e canais de atendimento em uma estrutura clara e
+                  responsiva.
+                </p>
+              </div>
+
               <a
                 href="https://elosolucoesempresariais.com.br/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-400 hover:text-blue-500 underline transition-colors"
+                className="group mt-12 flex items-center justify-between border-b border-black py-5 font-bold uppercase tracking-[0.16em] transition hover:border-blue-600 hover:text-blue-600"
               >
-                Acesse o site
+                Acessar projeto
+                <FaExternalLinkAlt className="text-sm transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
               </a>
             </div>
-          </div>
+
+            <div className="border border-black/15 bg-[#dedbd3] p-5">
+              <img
+                src={Elo}
+                alt="Site institucional da Elo Contabilidade"
+                className="h-full min-h-[380px] w-full object-cover object-top"
+              />
+            </div>
+          </article>
         </div>
       </section>
 
-      <section id="contato" className="py-20 px-6 bg-gray-900">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-extrabold text-blue-500 mb-6">
-            Contato
-          </h2>
-          <p className="text-gray-400 mb-10">
-            Tem um projeto em mente? Fale com a gente e vamos transformar sua
-            ideia em realidade.
-          </p>
+      {/* CONTATO */}
+      <section
+        id="contato"
+        className="bg-blue-600 px-6 py-28 text-white lg:px-12"
+      >
+        <div className="mx-auto grid max-w-7xl gap-14 lg:grid-cols-[0.85fr_1.15fr]">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.24em] text-white/60">
+              Contato
+            </p>
 
-          <form className="space-y-6 bg-gray-800 p-8 rounded-2xl shadow-lg border border-blue-500/30">
-            <input
-              type="text"
-              placeholder="Seu Nome"
-              className="w-full p-3 rounded-lg bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-            />
-            <input
-              type="email"
-              placeholder="Seu Email"
-              className="w-full p-3 rounded-lg bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
-            />
-            <textarea
-              placeholder="Sua Mensagem"
-              className="w-full p-3 rounded-lg bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 transition"
-              rows="5"
-            ></textarea>
-            <button className="w-full py-3 bg-blue-600 rounded-lg text-white font-semibold shadow-lg hover:bg-blue-500 transition transform hover:scale-105">
-              Enviar Mensagem
+            <h2 className="mt-10 max-w-xl text-5xl font-black uppercase leading-[0.95] tracking-[-0.06em] sm:text-6xl lg:text-8xl">
+              Vamos criar algo relevante.
+            </h2>
+
+            <p className="mt-9 max-w-lg text-lg leading-8 text-white/70">
+              Conte um pouco sobre sua empresa e sobre a solução que deseja
+              desenvolver.
+            </p>
+
+            <button
+              type="button"
+              onClick={abrirWhatsApp}
+              className="mt-10 flex items-center gap-4 border border-white px-6 py-4 text-sm font-bold uppercase tracking-[0.16em] transition hover:bg-white hover:text-blue-600"
+            >
+              <FaWhatsapp className="text-xl" />
+              Falar diretamente
+            </button>
+          </div>
+
+          <form
+            onSubmit={enviarFormulario}
+            className="border border-white/30 bg-white p-7 text-black sm:p-10"
+          >
+            <div className="grid gap-7 sm:grid-cols-2">
+              <div>
+                <label
+                  htmlFor="nome"
+                  className="mb-3 block text-xs font-bold uppercase tracking-[0.16em] text-black/50"
+                >
+                  Nome
+                </label>
+
+                <input
+                  id="nome"
+                  name="nome"
+                  type="text"
+                  required
+                  placeholder="Seu nome"
+                  className="w-full border-b border-black/25 bg-transparent px-0 py-4 outline-none transition placeholder:text-black/30 focus:border-blue-600"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="email"
+                  className="mb-3 block text-xs font-bold uppercase tracking-[0.16em] text-black/50"
+                >
+                  E-mail
+                </label>
+
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="seuemail@exemplo.com"
+                  className="w-full border-b border-black/25 bg-transparent px-0 py-4 outline-none transition placeholder:text-black/30 focus:border-blue-600"
+                />
+              </div>
+            </div>
+
+            <div className="mt-8">
+              <label
+                htmlFor="mensagem"
+                className="mb-3 block text-xs font-bold uppercase tracking-[0.16em] text-black/50"
+              >
+                Sobre o projeto
+              </label>
+
+              <textarea
+                id="mensagem"
+                name="mensagem"
+                required
+                rows={6}
+                placeholder="Descreva brevemente o que você precisa..."
+                className="w-full resize-none border-b border-black/25 bg-transparent px-0 py-4 outline-none transition placeholder:text-black/30 focus:border-blue-600"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="group mt-10 flex w-full items-center justify-between bg-black px-7 py-5 text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:bg-blue-700"
+            >
+              Enviar pelo WhatsApp
+              <FaArrowRight className="transition-transform group-hover:translate-x-1" />
             </button>
           </form>
         </div>
       </section>
-    </div>
+
+      {/* RODAPÉ */}
+      <footer className="bg-[#151515] px-6 py-10 text-white lg:px-12">
+        <div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 border-t border-white/20 pt-8 sm:flex-row sm:items-center">
+          <span className="text-xl font-black uppercase tracking-[-0.04em]">
+            Void<span className="text-blue-500">Works</span>
+          </span>
+
+          <p className="text-xs uppercase tracking-[0.16em] text-white/40">
+            © {new Date().getFullYear()} — Desenvolvimento digital
+          </p>
+        </div>
+      </footer>
+    </main>
   );
 }
